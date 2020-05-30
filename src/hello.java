@@ -8,14 +8,18 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 public class hello {
     public static void main(String[] args) {
-        System.out.println("Hello, World !!!");
+        long customer_number;
+        float amount;
+        int duration;
+        String deposit_type;
+        System.out.println("DOTIN TASK1!!!");
         try {
             File inputFile = new File("C:/Users/ghazalak/Desktop/xml.txt");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
-            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+            //System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getElementsByTagName("deposit");
             System.out.println("----------------------------");
 
@@ -25,28 +29,29 @@ public class hello {
 
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    System.out.println("deposit roll no : "
-                            + eElement.getAttribute("rollno"));
-                    System.out.println("customerNumber: "
-                            + eElement
+                    customer_number = Long.valueOf(eElement
                             .getElementsByTagName("customerNumber")
                             .item(0)
                             .getTextContent());
-                    System.out.println("depositType: "
-                            + eElement
+                    deposit_type = String.valueOf(eElement
                             .getElementsByTagName("depositType")
                             .item(0)
                             .getTextContent());
-                    System.out.println("depositBalance: "
-                            + eElement
+                    amount = Float.valueOf(eElement
                             .getElementsByTagName("depositBalance")
                             .item(0)
                             .getTextContent());
-                    System.out.println("durationInDays: "
-                            + eElement
+                    duration = Integer.valueOf(eElement
                             .getElementsByTagName("durationInDays")
                             .item(0)
                             .getTextContent());
+                    //System.out.println(customer_number + " " + amount + " " + duration);
+                    Deposit dp = new Deposit();
+                    dp.amount = amount;
+                    dp.duration = duration;
+                    dp.customer_number = customer_number;
+                    dp.deposit_type = deposit_type;
+                    dp.calculate();
                 }
             }
         } catch (Exception e) {
