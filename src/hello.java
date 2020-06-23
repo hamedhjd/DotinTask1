@@ -14,7 +14,7 @@ public class hello {
         String deposit_type;
         System.out.println("DOTIN TASK1!!!");
         try {
-            File inputFile = new File("C:/Users/ghazalak/Desktop/xml.txt");
+            File inputFile = new File("C:/Users/ghazalak/Desktop/xml.txt"); //در مورد آدرس دهی رلتیو و ابسولوت بخون :)
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
@@ -46,12 +46,12 @@ public class hello {
                             .item(0)
                             .getTextContent());
                     //System.out.println(customer_number + " " + amount + " " + duration);
-                    Deposit dp = new Deposit();
+                    Deposit dp = new Deposit(); // همه اسمایی که میذاری حتی اگه متغیر موقتن، باید معنی دار باشن. اسم این متغیر دیپازیته مثلا نه دی پی
                     dp.amount = amount;
                     dp.duration = duration;
                     dp.customer_number = customer_number;
                     dp.deposit_type = deposit_type;
-                    dp.calculate();
+                    dp.calculate(); // اسامی توابعت باید کاملا گویای کاری که میکنن باشن. کلکیولیت چی؟ مثلا کلکیولیت دیپازیت اینترست
                 }
             }
         } catch (Exception e) {
